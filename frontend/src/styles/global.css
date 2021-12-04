@@ -1,0 +1,487 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    background: #f2f3f5;
+    font-size: 1.6rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1.6rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+header {
+    background: white;
+    box-shadow: 0 0 10px 5px rgb(240, 240, 240);
+}
+
+ul, li {
+    list-style: none;
+}
+
+main {
+    margin-top: 3rem !important;
+    background: white;
+}
+
+.loading-mask > * {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.alert {
+    padding: 1rem;
+}
+
+.alert a {
+    text-decoration: underline;
+}
+
+.alert h3 {
+    font-size: 2rem;
+}
+
+.alert p {
+    padding: 1rem;
+}
+
+.alert.success {
+    background: #0769fc;
+    color: white;
+}
+
+.alert.error {
+    background: #fc5507;
+    color: white;
+}
+
+.block {
+    display: block;
+    width: 100%;
+}
+
+.img-full {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.p-1 {
+    padding: 1rem;
+}
+
+#loading-container, #page-message-container {
+    display: flex !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    text-transform: uppercase;
+    color: rgb(41, 41, 41);
+    font-size: 1.4rem;
+}
+
+#page-message-container h1 {
+    font-size: 2rem;
+}
+
+#page-message-container button {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: rgb(116, 116, 116);
+    background: none;
+    border: none;
+}
+
+#page-message-container button:hover {
+    text-decoration: underline wavy;
+}
+
+.display-loading > *, .display-message > * {
+    display: none !important;
+}
+
+.form-control {
+    padding: 1rem;
+}
+
+.form-control label {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
+    font-weight: bold;
+    text-align: left;
+}
+
+.form-control input, .form-control textarea {
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
+}
+
+.form-control input[type="submit"] {
+    text-transform: uppercase;
+}
+
+.container {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.view-full {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-nav {
+    background: #81f1ff;
+    padding: 1.5rem;
+    color:#074efc;
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.main-nav .container {
+    display:  flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-nav img {
+    height: 3rem;
+}
+
+.pagi-container {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(27, 27, 27);
+}
+
+.pagi-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: inherit;
+}
+
+.pagi-container button:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+.pagi-container button:disabled {
+    text-decoration: none;
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+.main__home, .main__post, .main__editPost, .main__comment {
+    margin-top: 3rem;
+    background: white;
+    flex: 1 0;
+    position: relative;
+    overflow-y: auto;
+}
+
+.main__create form, .main__edit form, .main__editPost form, .main__comment form {
+    padding: 1rem 1rem 3rem;
+}
+
+.main__create h2, .main__edit h2, .main__editPost h2, .main__comment h2 {
+    font-size: 2rem;
+    padding: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.main__home_list {
+    height: 100%;
+}
+
+.main__home_no_news::after {
+    content: "No news currently"; /* lazy approach */
+    position: absolute;
+    top: calc(50% - 0.5rem);
+    left: 0;
+    right: 0;
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
+}
+
+.main__home, .main__post {
+    scrollbar-color: #3686ff;
+    scrollbar-width: 1.2rem;
+}
+
+.main__home::-webkit-scrollbar, .main__post::-webkit-scrollbar {
+    display: block;
+    width: 1.3rem;
+    background: rgb(238, 238, 238);
+}
+
+.main__home::-webkit-scrollbar-thumb, .main__post::-webkit-scrollbar-thumb {
+    border-radius: 1.3rem;
+    background: #83b4ff;
+}
+
+
+.main__post a {
+    text-decoration: underline;
+}
+
+.main__post_image_container.no_images::after {
+    content: "No news image"; /* here again */
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+
+    border: 2px dotted grey;
+    background: white;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.main__post_image_container {
+    height: 30rem;
+    position: relative;
+}
+
+.main__post_image_container .image {
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+}
+
+.main__post_image_container .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.main__post_image_container .image-slide-action {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    align-items: center;
+}
+
+.main__post_image_container .image-slide-action button {
+    font-size: 3rem;
+    width: 6rem;
+    height: 6rem;
+    background: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: block;
+    cursor: pointer;
+}
+
+.main__post_image_container .image-slide-action button:hover {
+    opacity: 0.8;
+}
+
+.main__post_image_container .image-slide-action button:disabled{
+    opacity: 0.3;
+    cursor:not-allowed;
+}
+
+.main__post_image_container .images {
+    height: 100%;
+    display: flex;
+    background: black;
+    overflow: hidden;
+}
+
+.main__post_heading {
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid grey;
+}
+
+.main__post_heading h2 {
+    margin-left: 2rem;
+    border-left: 1px solid grey;
+    padding: 2rem;
+    text-transform: capitalize;
+}
+
+.main__post_heading .author-image {
+    flex-shrink: 0;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.main__post_heading h2 span {
+    display: block;
+    font-weight: normal;
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.main__post_content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.main__post_content a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 1rem 4rem;
+    background: #0769fc;
+    color: white;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    border-radius: 0.5rem;
+}
+
+.main__post_comments h3 {
+    padding: 2rem 2rem 1rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid grey;
+}
+
+.main__post_comments_content.no_comment::before {
+    content: "No comment";
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1rem;
+    display: block;
+}
+
+.main__post_comments_content li {
+    background: rgb(240, 240, 240);
+    padding: 2rem;
+    border-bottom: 1px solid rgb(219, 219, 219);
+}
+
+.main__post_comments_content li .meta {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.main__post_comments_content li .meta .comment-actions {
+    margin-left: auto;
+}
+
+.main__post_comments_content li .author-image {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.main__post_comments_content .add-comment {
+    padding: 4rem 1rem;
+}
+
+.news-item {
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    display: flex;
+    gap: 4rem;
+    color:rgb(41, 41, 41);
+    border-bottom: 1px solid rgb(219, 219, 219);
+}
+
+.news-item__numbering {
+    font-size: 2rem;
+    color: #074efc;
+    font-weight: bold;
+}
+
+.news-item__meta {
+    color:rgb(116, 116, 116);
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.news-item__actions {
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.news-item__actions button, .news-item__actions a, .comment-actions button, .comment-actions a {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.news-item__actions button:hover, .news-item__actions a:hover, .comment-actions button:hover, .comment-actions a:hover {
+    text-decoration: underline;
+}

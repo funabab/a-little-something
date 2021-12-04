@@ -96,6 +96,13 @@ export const deleteNews: RequestHandler = async (req, res, next) => {
     }
 
     await newsModel.remove({ id: pid })
+    await newsImagesModel.remove({
+      newsId: pid,
+    })
+    await newsCommentsModel.remove({
+      newsId: pid,
+    })
+
     res.json({
       message: 'News deleted',
     })
@@ -138,12 +145,12 @@ export const deleteNewsComment: RequestHandler = async (req, res, next) => {
     const pid = req.params.id as string
     const commentId = req.params.commentId as string
 
-    const image = await newsCommentsModel.findFirst({
+    const comment = await newsCommentsModel.findFirst({
       newsId: pid,
       id: commentId,
     })
 
-    if (!image) {
+    if (!comment) {
       const err: ServerError = new Error('News comment not found')
       err.statusCode = 404
       throw err
@@ -210,6 +217,27 @@ export const getNewsImages: RequestHandler = async (req, res, next) => {
     const images = await newsImagesModel.find({ newsId: news.id })
 
     res.json(images)
+  } catch (err) {
+    next(err)
+  }
+}
+
+export const getNewsCommentById: RequestHandler = async (req, res, next) => {
+  try {
+    const pid = req.params.id as string
+    const commentId = req.params.commentId as string
+    const comment = await newsCommentsModel.findFirst({
+      id: commentId,
+      newsId: pid,
+    })
+
+    if (!comment) {
+      const err: ServerError = new Error('News comment not found')
+      err.statusCode = 404
+      throw err
+    } else {
+      res.json(comment)
+    }
   } catch (err) {
     next(err)
   }
@@ -286,7 +314,7 @@ export const updateNewsComment: RequestHandler = async (req, res, next) => {
     const { name, avatar, comment: commentBody } = req.body
 
     await newsCommentsModel.update(
-      { id: pid },
+      { id: commentId },
       {
         name,
         avatar,

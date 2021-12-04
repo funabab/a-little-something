@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Post</title>
+  </head>
+  <body class="loading-mask view-full flex-column">
+    <header>
+      <nav class="main-nav">
+        <div class="container">
+          <h1>
+            <a href="/"><img src="/logo.png" /></a>
+          </h1>
+          <a href="/post">Create</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container main__post">
+      <div class="main__post_image_container">
+        <div class="images"></div>
+        <div class="image-slide-action">
+          <button class="btn-prev" disabled>&lt;</button>
+          <button class="btn-next" disabled>&gt;</button>
+        </div>
+      </div>
+      <div class="text-right p-1">
+        <a class="link-edit-news" href="">Edit news post</a> |
+        <a class="link-edit-news-images" href="">Edit news images</a>
+      </div>
+      <div class="main__post_heading">
+        <figure class="author-image">
+          <img alt="" class="img-full" />
+        </figure>
+        <h2></h2>
+      </div>
+      <div class="main__post_content">
+        <a class="link-view-news" href="" target="_blank" rel="nofollow">
+          View News
+        </a>
+      </div>
+      <div class="main__post_comments">
+        <h3>Comments</h3>
+
+        <div class="main__post_comments_content">
+          <ul></ul>
+          <div class="add-comment p-1">
+            <a href="/comment" class="btn-add-comment">Add new comment</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

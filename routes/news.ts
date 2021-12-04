@@ -4,9 +4,11 @@ import {
   addNewsComment,
   addNewsImage,
   deleteNews,
+  deleteNewsComment,
   deleteNewsImage,
   getNews,
   getNewsById,
+  getNewsCommentById,
   getNewsComments,
   getNewsImages,
   updateNews,
@@ -150,10 +152,6 @@ router
    * @access  public
    */
   .post(
-    body('author', 'author field is required').trim().exists({
-      checkFalsy: true,
-      checkNull: true,
-    }),
     body('name', 'name field is required')
       .trim()
       .exists({
@@ -180,15 +178,23 @@ router
 router
   .route('/:id([a-z0-9-]+)/comments/:commentId([a-z0-9-]+)')
   /***
+   * @desc    Get news comment
+   * @route   GET /api/news/:id/comments/:commentId
+   * @access  public
+   */
+  .get(getNewsCommentById)
+  /***
+   * @desc    Delete news comment
+   * @route   DELETE /api/news/:id/comments/:commentId
+   * @access  public
+   */
+  .delete(deleteNewsComment)
+  /***
    * @desc    Update news comment
    * @route   PUT /api/news/:id/comments/:commentId
    * @access  public
    */
   .put(
-    body('author', 'author field is required').trim().exists({
-      checkFalsy: true,
-      checkNull: true,
-    }),
     body('name', 'name field is required')
       .trim()
       .exists({

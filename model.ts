@@ -75,8 +75,9 @@ class Model<ModelType> implements IModel {
       return
     }
 
-    const filteredDataObj = dataObj.filter((obj) =>
-      keys.every((key) => !(key in obj && (obj as any)[key] === query[key]))
+    const filteredDataObj = dataObj.filter(
+      (obj) =>
+        !keys.every((key) => key in obj && (obj as any)[key] === query[key])
     )
 
     await fs.writeFile(this.modelPath, JSON.stringify(filteredDataObj))

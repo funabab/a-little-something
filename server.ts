@@ -8,6 +8,7 @@ const app = express()
 app.set('x-powered-by', false)
 app.use(express.json())
 
+app.use(express.static('frontend/build'))
 app.use('/api/news', router)
 
 app.use((req, res, next: NextFunction) => {
@@ -15,9 +16,9 @@ app.use((req, res, next: NextFunction) => {
   error.statusCode = 404
   next(error)
 })
-app.use((error: any, req: Request, res: Response, next: NextFunction) => {
+
+app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
   const err = error as ServerError
-  console.log(err)
   res.status(err.statusCode || 500).json({
     error: err.errors || err.message,
   })

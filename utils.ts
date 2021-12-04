@@ -9,13 +9,15 @@ export const validateRequest = (
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
-      const err: ServerError = new Error()
+      const err: ServerError = new Error(
+        errors
+          .formatWith((error) => error.msg)
+          .array({
+            onlyFirstError: true,
+          })
+          .join('\n')
+      )
       err.statusCode = errorStatusCode
-      err.errors = errors
-        .formatWith((error) => error.msg)
-        .array({
-          onlyFirstError: true,
-        })
       next(err)
     }
 
